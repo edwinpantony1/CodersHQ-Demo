@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: twtweb
+  labels:
+    app: twtweb
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      name: twtweb
+      app: twtweb
+  template:
+    metadata:
+      name: twtweb
+      labels:
+        name: twtweb
+        app: twtweb
+
+    spec:
+      containers:
+      - name: twtweb
+        image: twtcr.azurecr.io/twtweb:latest
+        ports:
+        - containerPort: 80
